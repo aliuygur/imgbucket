@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  web:
+    image: golang:1.9
+    environment:
+      - PORT=5000
+      - UPLOAD_PATH=/images
+      - PROXY_URL=http://img:9000
+    ports:
+      - "9001:5000"
+    volumes: 
+      - ./imgbucket:/app/imgbucket
+      - ./images:/images
+    links: 
+      - img
+    depends_on: 
+      - img
+    command: ["/app/imgbucket"]
+  img:
+    image: h2non/imaginary:latest
+    command: ["-gzip", "-mount=/images"]
+    volumes: 
+      - ./images:/images
+    environment: 
+      - DEBUG=*

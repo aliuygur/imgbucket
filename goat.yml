@@ -1,0 +1,7 @@
+init_tasks:
+  - command: "make compose-up"
+
+watchers:
+ - extension: go
+   tasks:
+   - command: "make compose-restart-web"
