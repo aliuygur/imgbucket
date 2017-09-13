@@ -1,5 +1,3 @@
-//go:generate mockgen -destination mock_providers/mock_mongodb.go github.com/alioygur/imgbucket/providers Repository
-
 package providers
 
 import (

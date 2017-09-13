@@ -94,8 +94,7 @@ func (s *service) Upload(r *UploadRequest) (*imgbucket.Image, error) {
 	img.Size = len(imgdata)
 	img.Format = format
 
-	_, err = s.fs.Create(fmt.Sprintf("%d/%d", bucket.UserID, img.ID), bytes.NewReader(imgdata))
-	if err != nil {
+	if err := s.fs.Create(fmt.Sprintf("%d/%d", bucket.UserID, img.ID), bytes.NewReader(imgdata)); err != nil {
 		return nil, err
 	}
 

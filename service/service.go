@@ -10,7 +10,7 @@ import (
 type (
 	// FileSystem interface
 	FileSystem interface {
-		Create(string, io.Reader) (*os.File, error)
+		Create(string, io.Reader) error
 		Open(string) (*os.File, error)
 		Remove(string) error
 	}

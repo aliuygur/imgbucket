@@ -16,7 +16,7 @@ func Test_service_Upload(t *testing.T) {
 		FileSystem
 	}{}
 
-	// test errors states
+	// test error states
 
 	t.Run("with empty bucket name also user doesn't have default bucket", func(t *testing.T) {
 		errNoDefaultBucket := errors.New("no default bucket")
